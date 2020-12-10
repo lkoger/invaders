@@ -1,0 +1,198 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://components/BaracadeBlock.tscn" type="PackedScene" id=1]
+
+[node name="Baracade" type="Node2D"]
+position = Vector2( 40, 12 )
+
+[node name="BaracadeBlock" parent="." instance=ExtResource( 1 )]
+position = Vector2( -4, 0 )
+
+[node name="BaracadeBlock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, 0 )
+
+[node name="BaracadeBlock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, 0 )
+
+[node name="BaracadeBlock6" parent="." instance=ExtResource( 1 )]
+position = Vector2( -4, -8 )
+
+[node name="BaracadeBlock5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, -8 )
+
+[node name="BaracadeBlock4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, -8 )
+
+[node name="BaracadeBlock12" parent="." instance=ExtResource( 1 )]
+position = Vector2( -28, 0 )
+
+[node name="BaracadeBlock11" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, 0 )
+
+[node name="BaracadeBlock10" parent="." instance=ExtResource( 1 )]
+position = Vector2( -36, 0 )
+
+[node name="BaracadeBlock9" parent="." instance=ExtResource( 1 )]
+position = Vector2( -28, -8 )
+
+[node name="BaracadeBlock8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, -8 )
+
+[node name="BaracadeBlock7" parent="." instance=ExtResource( 1 )]
+position = Vector2( -36, -8 )
+
+[node name="BaracadeBlock18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, 0 )
+
+[node name="BaracadeBlock16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, 0 )
+
+[node name="BaracadeBlock15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, -8 )
+
+[node name="BaracadeBlock13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, -8 )
+
+[node name="BaracadeBlock36" parent="." instance=ExtResource( 1 )]
+position = Vector2( -4, -16 )
+
+[node name="BaracadeBlock35" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, -16 )
+
+[node name="BaracadeBlock34" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, -16 )
+
+[node name="BaracadeBlock33" parent="." instance=ExtResource( 1 )]
+position = Vector2( -4, -24 )
+
+[node name="BaracadeBlock32" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, -24 )
+
+[node name="BaracadeBlock31" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, -24 )
+
+[node name="BaracadeBlock30" parent="." instance=ExtResource( 1 )]
+position = Vector2( -28, -16 )
+
+[node name="BaracadeBlock29" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, -16 )
+
+[node name="BaracadeBlock28" parent="." instance=ExtResource( 1 )]
+position = Vector2( -36, -16 )
+
+[node name="BaracadeBlock27" parent="." instance=ExtResource( 1 )]
+position = Vector2( -28, -24 )
+
+[node name="BaracadeBlock26" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, -24 )
+
+[node name="BaracadeBlock25" parent="." instance=ExtResource( 1 )]
+position = Vector2( -36, -24 )
+
+[node name="BaracadeBlock24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, -16 )
+
+[node name="BaracadeBlock22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, -16 )
+
+[node name="BaracadeBlock21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, -24 )
+
+[node name="BaracadeBlock19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, -24 )
+
+[node name="BaracadeBlock72" parent="." instance=ExtResource( 1 )]
+position = Vector2( -76, 0 )
+
+[node name="BaracadeBlock71" parent="." instance=ExtResource( 1 )]
+position = Vector2( -68, 0 )
+
+[node name="BaracadeBlock70" parent="." instance=ExtResource( 1 )]
+position = Vector2( -84, 0 )
+
+[node name="BaracadeBlock69" parent="." instance=ExtResource( 1 )]
+position = Vector2( -76, -8 )
+
+[node name="BaracadeBlock68" parent="." instance=ExtResource( 1 )]
+position = Vector2( -68, -8 )
+
+[node name="BaracadeBlock67" parent="." instance=ExtResource( 1 )]
+position = Vector2( -84, -8 )
+
+[node name="BaracadeBlock66" parent="." instance=ExtResource( 1 )]
+position = Vector2( -100, 0 )
+
+[node name="BaracadeBlock65" parent="." instance=ExtResource( 1 )]
+position = Vector2( -92, 0 )
+
+[node name="BaracadeBlock63" parent="." instance=ExtResource( 1 )]
+position = Vector2( -100, -8 )
+
+[node name="BaracadeBlock62" parent="." instance=ExtResource( 1 )]
+position = Vector2( -92, -8 )
+
+[node name="BaracadeBlock60" parent="." instance=ExtResource( 1 )]
+position = Vector2( -52, 0 )
+
+[node name="BaracadeBlock59" parent="." instance=ExtResource( 1 )]
+position = Vector2( -44, 0 )
+
+[node name="BaracadeBlock58" parent="." instance=ExtResource( 1 )]
+position = Vector2( -60, 0 )
+
+[node name="BaracadeBlock57" parent="." instance=ExtResource( 1 )]
+position = Vector2( -52, -8 )
+
+[node name="BaracadeBlock56" parent="." instance=ExtResource( 1 )]
+position = Vector2( -44, -8 )
+
+[node name="BaracadeBlock55" parent="." instance=ExtResource( 1 )]
+position = Vector2( -60, -8 )
+
+[node name="BaracadeBlock54" parent="." instance=ExtResource( 1 )]
+position = Vector2( -76, -16 )
+
+[node name="BaracadeBlock53" parent="." instance=ExtResource( 1 )]
+position = Vector2( -68, -16 )
+
+[node name="BaracadeBlock52" parent="." instance=ExtResource( 1 )]
+position = Vector2( -84, -16 )
+
+[node name="BaracadeBlock51" parent="." instance=ExtResource( 1 )]
+position = Vector2( -76, -24 )
+
+[node name="BaracadeBlock50" parent="." instance=ExtResource( 1 )]
+position = Vector2( -68, -24 )
+
+[node name="BaracadeBlock49" parent="." instance=ExtResource( 1 )]
+position = Vector2( -84, -24 )
+
+[node name="BaracadeBlock48" parent="." instance=ExtResource( 1 )]
+position = Vector2( -100, -16 )
+
+[node name="BaracadeBlock47" parent="." instance=ExtResource( 1 )]
+position = Vector2( -92, -16 )
+
+[node name="BaracadeBlock45" parent="." instance=ExtResource( 1 )]
+position = Vector2( -100, -24 )
+
+[node name="BaracadeBlock44" parent="." instance=ExtResource( 1 )]
+position = Vector2( -92, -24 )
+
+[node name="BaracadeBlock42" parent="." instance=ExtResource( 1 )]
+position = Vector2( -52, -16 )
+
+[node name="BaracadeBlock41" parent="." instance=ExtResource( 1 )]
+position = Vector2( -44, -16 )
+
+[node name="BaracadeBlock40" parent="." instance=ExtResource( 1 )]
+position = Vector2( -60, -16 )
+
+[node name="BaracadeBlock39" parent="." instance=ExtResource( 1 )]
+position = Vector2( -52, -24 )
+
+[node name="BaracadeBlock38" parent="." instance=ExtResource( 1 )]
+position = Vector2( -44, -24 )
+
+[node name="BaracadeBlock37" parent="." instance=ExtResource( 1 )]
+position = Vector2( -60, -24 )

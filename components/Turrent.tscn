@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://components/Turrent.gd" type="Script" id=2]
+
+[node name="Turrent" type="RayCast2D"]
+enabled = true
+cast_to = Vector2( 0, -64 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.5 )
+texture = ExtResource( 1 )

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://PauseMenu.gd" type="Script" id=1]
+
+[node name="PauseMenu" type="PopupMenu"]
+pause_mode = 2
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="."]
+margin_left = 384.0
+margin_top = 44.0
+margin_right = 640.0
+margin_bottom = 108.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="."]
+margin_left = 384.0
+margin_top = 172.0
+margin_right = 640.0
+margin_bottom = 236.0
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="about_to_show" from="." to="." method="_on_PauseMenu_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_PauseMenu_popup_hide"]
+[connection signal="pressed" from="Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

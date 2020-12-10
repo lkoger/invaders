@@ -1,0 +1,249 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://actors/Invader.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://some_level.gd" type="Script" id=3]
+[ext_resource path="res://components/Baracade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 510, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 320 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 504, 24 )
+
+[node name="world" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 24 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 2.21606, 57.6178 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -2.21606, -12.1884 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 16.4654, 0.587778 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 516.344, -263.712 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+scale = Vector2( 0.375, 10 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( -516.343, -263.712 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="StaticBody2D4"]
+scale = Vector2( 0.375, 10 )
+texture = ExtResource( 5 )
+
+[node name="invaders" type="Node2D" parent="."]
+
+[node name="Invader3" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -320, -536 )
+
+[node name="Invader4" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -256, -536 )
+
+[node name="Invader8" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -192, -536 )
+
+[node name="Invader7" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -128, -536 )
+
+[node name="Invader6" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -64, -536 )
+
+[node name="Invader5" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 0, -536 )
+
+[node name="Invader12" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 64, -536 )
+
+[node name="Invader11" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 128, -536 )
+
+[node name="Invader10" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 192, -536 )
+
+[node name="Invader9" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 256, -536 )
+
+[node name="Invader14" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 320, -536 )
+
+[node name="Invader26" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -320, -496 )
+
+[node name="Invader25" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -256, -496 )
+
+[node name="Invader24" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -192, -496 )
+
+[node name="Invader23" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -128, -496 )
+
+[node name="Invader22" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -64, -496 )
+
+[node name="Invader21" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 0, -496 )
+
+[node name="Invader20" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 64, -496 )
+
+[node name="Invader19" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 128, -496 )
+
+[node name="Invader18" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 192, -496 )
+
+[node name="Invader17" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 256, -496 )
+
+[node name="Invader16" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 320, -496 )
+
+[node name="Invader52" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -320, -456 )
+
+[node name="Invader51" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -256, -456 )
+
+[node name="Invader50" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -192, -456 )
+
+[node name="Invader49" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -128, -456 )
+
+[node name="Invader48" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -64, -456 )
+
+[node name="Invader47" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 0, -456 )
+
+[node name="Invader46" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 64, -456 )
+
+[node name="Invader45" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 128, -456 )
+
+[node name="Invader44" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 192, -456 )
+
+[node name="Invader43" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 256, -456 )
+
+[node name="Invader42" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 320, -456 )
+
+[node name="Invader39" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -320, -416 )
+
+[node name="Invader38" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -256, -416 )
+
+[node name="Invader37" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -192, -416 )
+
+[node name="Invader36" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -128, -416 )
+
+[node name="Invader35" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -64, -416 )
+
+[node name="Invader34" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 0, -416 )
+
+[node name="Invader33" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 64, -416 )
+
+[node name="Invader32" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 128, -416 )
+
+[node name="Invader31" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 192, -416 )
+
+[node name="Invader30" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 256, -416 )
+
+[node name="Invader29" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 320, -416 )
+
+[node name="Invader61" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -320, -376 )
+
+[node name="Invader60" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -256, -376 )
+
+[node name="Invader59" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -192, -376 )
+
+[node name="Invader58" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -128, -376 )
+
+[node name="Invader57" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( -64, -376 )
+
+[node name="Invader56" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 0, -376 )
+
+[node name="Invader55" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 64, -376 )
+
+[node name="Invader54" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 128, -376 )
+
+[node name="Invader53" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 192, -376 )
+
+[node name="Invader41" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 256, -376 )
+
+[node name="Invader40" parent="invaders" instance=ExtResource( 1 )]
+position = Vector2( 320, -376 )
+
+[node name="Baracade" parent="." instance=ExtResource( 4 )]
+position = Vector2( 168, -40 )
+
+[node name="Baracade2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 424, -40 )
+
+[node name="Baracade3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -344, -40 )
+
+[node name="Baracade4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -88, -40 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -296 )
+current = true
+zoom = Vector2( 1.1, 1.1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -56 )
+shape = SubResource( 3 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 6 )]
+margin_top = -336.0
+margin_bottom = -80.0
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
