@@ -6,14 +6,15 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
-		velocity.x = speed
+		velocity.x = min(speed, velocity.x + speed)
 	elif Input.is_action_pressed("left"):
-		velocity.x = -speed
+		velocity.x = max(-speed, velocity.x - speed)
 		
 	if Input.is_action_just_pressed("fire"):
+		#$Turrent.can_fire = true
 		$Turrent.fire()
 	
-	move_and_collide(velocity)
+	move_and_collide(velocity*delta)
 	velocity.x = lerp(velocity.x, 0.0, 0.2)
 
 func _process(delta):

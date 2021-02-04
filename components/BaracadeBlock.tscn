@@ -4,7 +4,7 @@
 [ext_resource path="res://BaracadeBlock.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+extents = Vector2( 1, 1 )
 
 [node name="BaracadeBlock" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -13,5 +13,5 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.124, 0.124 )
+scale = Vector2( 0.031, 0.031 )
 texture = ExtResource( 1 )

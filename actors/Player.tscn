@@ -9,6 +9,7 @@ extents = Vector2( 16, 16 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+speed = 250
 
 [node name="Turrent" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )

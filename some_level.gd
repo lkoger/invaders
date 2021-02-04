@@ -3,6 +3,8 @@ extends Node2D
 
 func _ready():
 	add_to_group("level_controller")
+	for invader in $invaders.get_children():
+		invader.activate()
 
 func _process(delta):
 	pass
