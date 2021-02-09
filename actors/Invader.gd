@@ -28,18 +28,13 @@ func hide_and_disable():
 	dead = true
 	visible = false
 	$CollisionShape2D.disabled = true
-#	set_collision_layer_bit(1,false)
-#	set_collision_mask_bit(1,false)
 	set_process(false)
 	set_physics_process(false)
 
 func _process(delta):
 	fire_delay_counter = max(0, fire_delay_counter-1)
 	if health <= 0:
-		announce_speed_up(1)
-		print("calling hide")
 		hide_and_disable()
-		#queue_free()
 
 func _physics_process(delta):
 	pass
@@ -70,10 +65,7 @@ func move(delta, drop, change_direction):
 	
 
 func announce_drop():
-	get_tree().call_group("invader_controller", "start_drop")	
-
-func announce_speed_up(increase):
-	get_tree().call_group("invader_controller", "speed_up", increase)
+	get_tree().call_group("invader_controller", "start_drop")
 
 func drop(delta):
 	velocity = Vector2(0.0, drop_distance)

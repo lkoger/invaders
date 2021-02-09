@@ -11,10 +11,10 @@ var col_idx := 0
 var invader_idx := 0
 var num_invaders := rows * columns
 
-export var movement_delay := 16
-var speed := 4
+export var movement_delay := 0
+var speed := 1
 
-enum {INIT, ACTIVATE, ACTIVE}
+enum {INIT, ACTIVATE, ACTIVE, END}
 var state = INIT
 
 var start_drop := false
@@ -67,32 +67,54 @@ func _activate(delta):
 		print("ACTIVE")
 
 func _physics_process(delta):
+	if is_game_over():
+		state = END
+	
 	if state == ACTIVE:
-#		for n in range(speed/4):
-#			_move(delta)
 		if time_counter == 0:
-			for n in range(speed):
-				_move(delta)
+			var invader_dead = _move(delta)
+			while invader_dead:
+				invader_dead = _move(delta)
 			time_counter = movement_delay
 		else:
 			time_counter = max(0, time_counter-1)
+	elif state == END:
+		print("Game Over")
+		set_physics_process(false)
 
 func _move(delta):
 	if invader_idx == 0 and start_drop:
-		drop = true
-		start_drop = false
+			drop = true
+			start_drop = false
+	elif invader_idx == 0 and drop:
+		drop = false
+	#
 	
 	var change_direction = drop
-	invaders.get_child(invader_idx).move(delta, drop, change_direction)
+	var dead = invaders.get_child(invader_idx).dead
+	if not dead:
+		invaders.get_child(invader_idx).move(delta, drop, change_direction)
 	
 	if invader_idx == (num_invaders - 1) and drop:
 		drop = false
 	
 	invader_idx = (invader_idx + 1) % num_invaders
+	return dead
 
 func start_drop():
 	if not drop and not start_drop:
 		start_drop = true
 
 func speed_up(increase):
-	pass #speed += 3
+	pass #speed += 1
+
+func is_game_over():
+	if state == END:
+		return true
+	elif state == INIT or state == ACTIVATE:
+		return false
+	elif state == ACTIVE:
+		for invader in invaders.get_children():
+			if not invader.dead:
+				return false
+	return true
