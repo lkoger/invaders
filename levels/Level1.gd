@@ -14,6 +14,3 @@ func pause():
 func unpause():
 	$PauseMenu.hide()
 	get_tree().paused = false
-
-func reset():
-	print("reset called")

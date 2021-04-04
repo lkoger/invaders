@@ -90,6 +90,7 @@ func _physics_process(delta):
 	elif state == END:
 		print("Game Over")
 		set_physics_process(false)
+		_game_over()
 	
 
 func _move(delta):
@@ -135,3 +136,7 @@ func reset_invader_positions():
 func _change_state(x):
 	state = x
 	print("state: " + str(state))
+
+func _game_over():
+	get_tree().root.get_children()[0].end_game()
+	
