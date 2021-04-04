@@ -4,12 +4,13 @@ class_name Invader
 export var row := 1
 export var direction := 1
 export var drop_distance := 128 * 4
-export var fire_chance := 0.10
+export var fire_chance := 1.0 / 5.5
 onready var rng = RandomNumberGenerator.new()
 
-var fire_delay := 60
+var fire_delay := 30
 var fire_delay_counter := fire_delay
 
+var start_position := Vector2(0.0, 0.0)
 var dead := false
 
 func _ready():
@@ -19,6 +20,12 @@ func _ready():
 	fire_delay_counter = fire_delay
 	set_process(false)
 	set_physics_process(false)
+
+func set_start_position(pos):
+	start_position = pos
+
+func reset_position():
+	position = start_position
 
 func activate():
 	set_process(true)

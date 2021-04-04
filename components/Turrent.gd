@@ -2,7 +2,7 @@ extends RayCast2D
 
 export var bullet_speed := 600.0
 var bullet = load("res://components/Bullet.tscn")
-onready var root = get_tree().get_root()
+onready var root = get_tree().root.get_children()[0]
 var can_fire := true
 
 func _ready():

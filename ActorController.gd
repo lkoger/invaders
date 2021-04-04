@@ -1,6 +1,7 @@
 extends Node2D
 
 var invader = load("res://actors/Invader.tscn")
+onready var defender = load("res://actors/Player.tscn").instance()
 var rows := 5
 var columns := 11
 var time_offset := 1
@@ -14,7 +15,7 @@ var num_invaders := rows * columns
 export var movement_delay := 0
 var speed := 1
 
-enum {INIT, ACTIVATE, ACTIVE, END}
+enum {INIT, ACTIVATE, ACTIVE, INACTIVE, END}
 var state = INIT
 
 var start_drop := false
@@ -49,38 +50,47 @@ func _init_invaders(delta):
 		time_counter = time_offset
 	elif row_idx == rows:
 		print("ACTIVATE")
-		state = ACTIVATE
+		_change_state(ACTIVATE)
 		row_idx = 0
 		col_idx = 0
 
 
 func _activate(delta):
-	if row_idx < rows and time_counter == 0:
-		print("in activate")
-		# Needs to just iterate through each child at some point
-		# instead of the whole row
-		get_tree().call_group("invader", "activate")
-		row_idx += 1
-		time_counter = row_time_offset
+	row_idx += 1
+	time_counter = row_time_offset
+	get_tree().call_group("invader", "activate")
+	
 	if row_idx == rows:
-		state = ACTIVE
+		_change_state(ACTIVE)
+		add_child(defender)
+		defender.position = Vector2(0, 272)
 		print("ACTIVE")
 
 func _physics_process(delta):
 	if is_game_over():
-		state = END
+		_change_state(END)
 	
 	if state == ACTIVE:
-		if time_counter == 0:
-			var invader_dead = _move(delta)
-			while invader_dead:
-				invader_dead = _move(delta)
-			time_counter = movement_delay
+		if defender.dead == true:
+			_change_state(INACTIVE)
 		else:
-			time_counter = max(0, time_counter-1)
+			if time_counter == 0:
+				var invader_dead = _move(delta)
+				while invader_dead:
+					invader_dead = _move(delta)
+				time_counter = movement_delay
+			else:
+				time_counter = max(0, time_counter-1)
+	elif state == INACTIVE:
+		if defender.lives <= 0:
+			_change_state(END)
+		elif defender.can_respawn():
+			defender.respawn(Vector2(0, 272))
+			_change_state(ACTIVE)
 	elif state == END:
 		print("Game Over")
 		set_physics_process(false)
+	
 
 func _move(delta):
 	if invader_idx == 0 and start_drop:
@@ -111,10 +121,17 @@ func speed_up(increase):
 func is_game_over():
 	if state == END:
 		return true
-	elif state == INIT or state == ACTIVATE:
+	elif state == INIT or state == ACTIVATE or state == INACTIVE:
 		return false
 	elif state == ACTIVE:
 		for invader in invaders.get_children():
 			if not invader.dead:
 				return false
 	return true
+
+func reset_invader_positions():
+	get_tree().call_group("invader", "reset_position")
+
+func _change_state(x):
+	state = x
+	print("state: " + str(state))
