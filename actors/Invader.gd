@@ -4,7 +4,7 @@ class_name Invader
 export var row := 1
 export var direction := 1
 export var drop_distance := 128 * 4
-export var fire_chance := 1.0 / 5.5
+export var fire_chance := 1.0 / 8.0
 onready var rng = RandomNumberGenerator.new()
 
 var fire_delay := 30

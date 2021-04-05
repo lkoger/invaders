@@ -1,8 +1,7 @@
 extends Area2D
-class_name Bullet
+class_name Missle
 
 export var dmg := 1
-var player_owned := true
 var velocity := Vector2(0.0,0.0)
 var turrent = null
 var hit_something = false
@@ -11,6 +10,7 @@ onready var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 	set_physics_process(false)
+	connect("area_entered", self, "_on_area_entered")
 	connect("body_entered", self, "_on_body_entered")
 	$LifeTime.connect("timeout", self, "_on_LifeTime_timeout")
 
@@ -22,13 +22,15 @@ func fire(direction: Vector2, speed: float):
 	set_physics_process(true)
 	$LifeTime.start()
 
+func _on_area_entered(area: Node):
+	if area is Bullet:
+		print("COLLISION")
+		area.destroy_self()
+		destroy_self()
+
 func _on_body_entered(body: Node):
 	if hit_something == false:
-		if player_owned and body is Invader:
-			hit_something = true
-			body.damage(dmg)
-			destroy_self()
-		elif not player_owned and body is Player:
+		if body is Player:
 			hit_something = true
 			body.damage(dmg)
 			destroy_self()
@@ -45,7 +47,7 @@ func _on_body_entered(body: Node):
 			for x in bodies:
 				if x.has_method('damage'):
 					var rand = rng.randf_range(0.0, 1.0)
-					if rand <= 0.50:
+					if rand <= 0.5:
 						x.damage(dmg)
 			body.damage(dmg)
 			destroy_self()

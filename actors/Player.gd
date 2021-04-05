@@ -7,6 +7,7 @@ var respawn_time := 300
 var timer := 0
 
 func _ready():
+	speed = speed / 2
 	pass
 
 func _physics_process(delta):

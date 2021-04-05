@@ -1,14 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://components/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://components/Missle.gd" type="Script" id=2]
 [ext_resource path="res://components/AreaOfEffect.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0
 height = 12.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Missle" type="Area2D"]
+modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
