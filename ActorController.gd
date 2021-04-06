@@ -11,6 +11,7 @@ var row_idx := 0
 var col_idx := 0
 var invader_idx := 0
 var num_invaders := rows * columns
+#var lives := 3
 
 export var movement_delay := 0
 var speed := 1
@@ -21,11 +22,14 @@ var state = INIT
 var start_drop := false
 var drop := false
 
+var game_over := false
+
 onready var invaders = $invaders
 
 func _ready():
 	add_to_group("invader_controller")
-	print("HEY!")
+	defender.hide_and_disable()
+	add_child(defender)
 
 func _process(delta):
 	if state == INIT:
@@ -36,12 +40,32 @@ func _process(delta):
 	if not state == ACTIVE:
 		time_counter = max(0, time_counter-1)
 
+func new_round(new_game):
+	if new_game:
+		defender.lives = 3
+		get_tree().call_group("level", "update_ui_lives", defender.lives)
+	defender.hide_and_disable()
+	for invader in invaders.get_children():
+		invader.queue_free()
+	col_idx = 0
+	row_idx = 0
+	invader_idx = 0
+	state = INIT
+	game_over = false
+	#set_physics_process(true)
+
 func _init_invaders(delta):
 	if row_idx < rows and time_counter == 0:
 		var invader_instance = invader.instance()
 		invader_instance.row = row_idx
 		invaders.add_child(invader_instance)
 		invader_instance.position = Vector2((col_idx*64) - (64*columns*0.5), -row_idx*48)
+		if row_idx < 2:
+			invader_instance.set_score(10)
+		elif row_idx < 4:
+			invader_instance.set_score(20)
+		else:
+			invader_instance.set_score(30)
 
 		col_idx += 1
 		if col_idx == columns:
@@ -62,8 +86,9 @@ func _activate(delta):
 	
 	if row_idx == rows:
 		_change_state(ACTIVE)
-		add_child(defender)
-		defender.position = Vector2(0, 272)
+#		add_child(defender)
+#		defender.position = Vector2(0, 272)
+		defender.spawn(Vector2(0, 272))
 		print("ACTIVE")
 
 func _physics_process(delta):
@@ -85,11 +110,9 @@ func _physics_process(delta):
 		if defender.lives <= 0:
 			_change_state(END)
 		elif defender.can_respawn():
-			defender.respawn(Vector2(0, 272))
+			defender.spawn(Vector2(0, 272))
 			_change_state(ACTIVE)
 	elif state == END:
-		print("Game Over")
-		set_physics_process(false)
 		_game_over()
 	
 
@@ -104,7 +127,13 @@ func _move(delta):
 	var change_direction = drop
 	var dead = invaders.get_child(invader_idx).dead
 	if not dead:
-		invaders.get_child(invader_idx).move(delta, drop, change_direction)
+		var child = invaders.get_child(invader_idx)
+		var can_fire = true
+		if child.is_turrent_colliding():
+			var collider = child.get_turrent_collider()
+			if collider is Invader:
+				can_fire = false
+		child.move(delta, drop, change_direction, can_fire)
 	
 	if invader_idx == (num_invaders - 1) and drop:
 		drop = false
@@ -138,5 +167,13 @@ func _change_state(x):
 	print("state: " + str(state))
 
 func _game_over():
-	get_tree().root.get_children()[0].end_game()
+	if game_over == false:
+		game_over = true
+		#set_physics_process(false)
+		if defender.lives > 0:
+			print("New Round")
+			get_tree().root.get_children()[0].new_round()
+		else:
+			print("End Game")
+			get_tree().root.get_children()[0].end_game()
 	

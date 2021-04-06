@@ -13,6 +13,8 @@ var fire_delay_counter := fire_delay
 var start_position := Vector2(0.0, 0.0)
 var dead := false
 
+var score := 10
+
 func _ready():
 	rng.randomize()
 	add_to_group("invader")
@@ -31,12 +33,16 @@ func activate():
 	set_process(true)
 	set_physics_process(true)
 
+func set_score(val):
+	score = val
+
 func hide_and_disable():
 	dead = true
 	visible = false
 	$CollisionShape2D.disabled = true
 	set_process(false)
 	set_physics_process(false)
+	get_tree().call_group("level", "increment_score", score)
 
 func _process(delta):
 	fire_delay_counter = max(0, fire_delay_counter-1)
@@ -46,7 +52,7 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 
-func move(delta, drop, change_direction):
+func move(delta, drop, change_direction, can_fire):
 	if dead:
 		return
 	
@@ -56,8 +62,9 @@ func move(delta, drop, change_direction):
 	if drop:
 		drop(delta)
 	
-	var colliding = $Turrent.is_colliding()
-	if not colliding:
+	if can_fire:
+#		var colliding = $Turrent.is_colliding()
+#		if not colliding:
 		if fire_delay_counter == 0 and $Turrent.can_fire:
 			fire_delay_counter = fire_delay
 			if rng.randf_range(0.0, 1.0) <= fire_chance:
@@ -84,3 +91,9 @@ func change_direction():
 func _move(delta):
 	velocity = Vector2(speed*direction, 0.0)
 	move_and_collide(velocity*delta)
+
+func is_turrent_colliding():
+	return $Turrent.is_colliding()
+
+func get_turrent_collider():
+	return $Turrent.get_collider()

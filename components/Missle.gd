@@ -13,6 +13,7 @@ func _ready():
 	connect("area_entered", self, "_on_area_entered")
 	connect("body_entered", self, "_on_body_entered")
 	$LifeTime.connect("timeout", self, "_on_LifeTime_timeout")
+	add_to_group("projectile")
 
 func _physics_process(delta):
 	position += velocity * delta

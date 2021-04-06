@@ -13,6 +13,7 @@ func _ready():
 	set_physics_process(false)
 	connect("body_entered", self, "_on_body_entered")
 	$LifeTime.connect("timeout", self, "_on_LifeTime_timeout")
+	add_to_group("projectile")
 
 func _physics_process(delta):
 	position += velocity * delta
@@ -45,7 +46,7 @@ func _on_body_entered(body: Node):
 			for x in bodies:
 				if x.has_method('damage'):
 					var rand = rng.randf_range(0.0, 1.0)
-					if rand <= 0.50:
+					if rand <= 1.0:
 						x.damage(dmg)
 			body.damage(dmg)
 			destroy_self()

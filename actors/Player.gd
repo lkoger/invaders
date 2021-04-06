@@ -8,6 +8,7 @@ var timer := 0
 
 func _ready():
 	speed = speed / 2
+	get_tree().call_group("level", "update_ui_lives", lives)
 	pass
 
 func _physics_process(delta):
@@ -33,16 +34,20 @@ func _process(delta):
 			
 
 func _die():
+	# Clear all projectiles so that no kills are ever make after player death
+	get_tree().call_group("projectile", "destroy_self")
+	
 	dead = true
 	lives -= 1
-	_hide_and_disable()
+	get_tree().call_group("level", "update_ui_lives", lives)
+	hide_and_disable()
 	
 	# Need to call some end game logic at this point
 #	print(get_parent().name)
 #	get_tree().call_group("world", "end_game")
 #	queue_free()
 
-func _hide_and_disable():
+func hide_and_disable():
 	timer = 0
 	dead = true
 	visible = false
@@ -50,7 +55,7 @@ func _hide_and_disable():
 	#set_process(false)
 	set_physics_process(false)
 
-func respawn(pos):
+func spawn(pos):
 	reset_health()
 	position = pos
 	timer = 0

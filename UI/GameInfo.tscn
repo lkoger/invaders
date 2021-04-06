@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/GameInfo.gd" type="Script" id=1]
+
+[node name="GameInfo" type="Control"]
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="RichTextLabel" parent="."]
+margin_left = 64.0
+margin_top = 556.0
+margin_right = 104.0
+margin_bottom = 596.0
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+margin_left = 256.0
+margin_top = 12.0
+margin_right = 320.0
+margin_bottom = 36.0
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="RichTextLabel" parent="."]
+margin_left = 320.0
+margin_top = 12.0
+margin_right = 384.0
+margin_bottom = 36.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="."]
+margin_left = 384.0
+margin_top = 12.0
+margin_right = 472.0
+margin_bottom = 36.0
+text = "High Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScore" type="RichTextLabel" parent="."]
+margin_left = 472.0
+margin_top = 12.0
+margin_right = 536.0
+margin_bottom = 36.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

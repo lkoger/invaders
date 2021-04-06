@@ -5,7 +5,7 @@
 
 [node name="Turrent" type="RayCast2D"]
 enabled = true
-cast_to = Vector2( 0, -64 )
+cast_to = Vector2( 0, -400 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -1,7 +1,7 @@
 extends RayCast2D
 
-export var bullet_speed := 600.0
-export var missle_speed := 100.0
+export var bullet_speed := 400.0
+export var missle_speed := 300.0
 var bullet = load("res://components/Bullet.tscn")
 var missle = load("res://components/Missle.tscn")
 onready var root = get_tree().root.get_children()[0]
@@ -44,7 +44,7 @@ func set_can_fire(value):
 func _get_projectile():
 	# If the turrent is player owned, only ever fire bullets. Missle are
 	# reserved for invaders.
-	var bullet_chance = 0.0
+	var bullet_chance = 0.5
 	if owner is Player:
 		bullet_chance = 1.0
 		
