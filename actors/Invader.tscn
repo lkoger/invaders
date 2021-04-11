@@ -1,8 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://actors/invader_1_1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Invader.gd" type="Script" id=2]
 [ext_resource path="res://components/Turrent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/laserRetro_002.ogg" type="AudioStream" id=4]
+[ext_resource path="res://actors/invader_1_2.png" type="Texture" id=5]
+[ext_resource path="res://actors/invader_3_1.png" type="Texture" id=6]
+[ext_resource path="res://actors/invader_3_2.png" type="Texture" id=7]
+[ext_resource path="res://actors/invader_2_1.png" type="Texture" id=8]
+[ext_resource path="res://actors/invader_2_2.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "top_row",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "bottom_row",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "middle_row",
+"speed": 1.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -16,11 +40,14 @@ speed = 500
 position = Vector2( 0, -16 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 1 )
+frames = SubResource( 2 )
+animation = "bottom_row"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="RightRayCast2D" type="RayCast2D" parent="."]
@@ -37,3 +64,6 @@ cast_to = Vector2( 32, 0 )
 position = Vector2( 0, 16 )
 enabled = true
 cast_to = Vector2( 0, 16 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

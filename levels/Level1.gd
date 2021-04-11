@@ -1,6 +1,7 @@
 extends Node2D
 
 var baracade = load("res://components/Baracade.tscn")
+var zoomed = false
 
 func _ready():
 	print("Level Ready")

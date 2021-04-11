@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "BaracadeBlock",
 "language": "GDScript",
-"path": "res://BaracadeBlock.gd"
+"path": "res://components/BaracadeBlock.gd"
 }, {
 "base": "Area2D",
 "class": "Bullet",

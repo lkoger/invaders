@@ -13,7 +13,7 @@ var invader_idx := 0
 var num_invaders := rows * columns
 #var lives := 3
 
-export var movement_delay := 0
+export var movement_delay := 1
 var speed := 1
 
 enum {INIT, ACTIVATE, ACTIVE, INACTIVE, END}
@@ -62,10 +62,13 @@ func _init_invaders(delta):
 		invader_instance.position = Vector2((col_idx*64) - (64*columns*0.5), -row_idx*48)
 		if row_idx < 2:
 			invader_instance.set_score(10)
+			invader_instance.set_sprite('bottom_row')
 		elif row_idx < 4:
 			invader_instance.set_score(20)
+			invader_instance.set_sprite('middle_row')
 		else:
 			invader_instance.set_score(30)
+			invader_instance.set_sprite('top_row')
 
 		col_idx += 1
 		if col_idx == columns:
@@ -138,6 +141,8 @@ func _move(delta):
 	if invader_idx == (num_invaders - 1) and drop:
 		drop = false
 	
+#	if invader_idx == 0 and not $MoveSound.is_playing():
+#		$MoveSound.play()
 	invader_idx = (invader_idx + 1) % num_invaders
 	return dead
 

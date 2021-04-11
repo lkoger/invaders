@@ -4,7 +4,7 @@ class_name Invader
 export var row := 1
 export var direction := 1
 export var drop_distance := 128 * 4
-export var fire_chance := 1.0 / 8.0
+export var fire_chance := 1.0 / 18.0
 onready var rng = RandomNumberGenerator.new()
 
 var fire_delay := 30
@@ -43,6 +43,7 @@ func hide_and_disable():
 	set_process(false)
 	set_physics_process(false)
 	get_tree().call_group("level", "increment_score", score)
+	$DeathSound.play()
 
 func _process(delta):
 	fire_delay_counter = max(0, fire_delay_counter-1)
@@ -91,9 +92,17 @@ func change_direction():
 func _move(delta):
 	velocity = Vector2(speed*direction, 0.0)
 	move_and_collide(velocity*delta)
+	var frame = $AnimatedSprite.get_frame()
+	$AnimatedSprite.set_frame((frame + 1) % 2)
 
 func is_turrent_colliding():
 	return $Turrent.is_colliding()
 
 func get_turrent_collider():
 	return $Turrent.get_collider()
+
+func set_sprite(animation_name):
+	$AnimatedSprite.set_animation(animation_name)
+	
+	
+	

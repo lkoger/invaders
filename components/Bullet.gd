@@ -22,6 +22,8 @@ func fire(direction: Vector2, speed: float):
 	velocity = direction * speed
 	set_physics_process(true)
 	$LifeTime.start()
+	if player_owned:
+		$FireSound.play()
 
 func _on_body_entered(body: Node):
 	if hit_something == false:
