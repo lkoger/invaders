@@ -10,6 +10,9 @@ onready var rng = RandomNumberGenerator.new()
 var fire_delay := 30
 var fire_delay_counter := fire_delay
 
+var death_time := 30
+var death_timer := death_time
+
 var start_position := Vector2(0.0, 0.0)
 var dead := false
 
@@ -43,12 +46,17 @@ func hide_and_disable():
 	set_process(false)
 	set_physics_process(false)
 	get_tree().call_group("level", "increment_score", score)
-	$DeathSound.play()
 
 func _process(delta):
 	fire_delay_counter = max(0, fire_delay_counter-1)
 	if health <= 0:
-		hide_and_disable()
+		if death_timer == death_time:
+			die()
+			death_timer -= 1
+		elif death_timer > 0:
+			death_timer -= 1
+		else:
+			hide_and_disable()
 
 func _physics_process(delta):
 	pass
@@ -104,5 +112,8 @@ func get_turrent_collider():
 func set_sprite(animation_name):
 	$AnimatedSprite.set_animation(animation_name)
 	
-	
+func die():
+	$DeathSound.play()
+	$AnimatedSprite.set_animation("death")
+	$AnimatedSprite.play()
 	

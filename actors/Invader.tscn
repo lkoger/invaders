@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://actors/invader_1_1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Invader.gd" type="Script" id=2]
@@ -9,14 +9,10 @@
 [ext_resource path="res://actors/invader_3_2.png" type="Texture" id=7]
 [ext_resource path="res://actors/invader_2_1.png" type="Texture" id=8]
 [ext_resource path="res://actors/invader_2_2.png" type="Texture" id=9]
+[ext_resource path="res://actors/invader_explosion.png" type="Texture" id=10]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "top_row",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "bottom_row",
@@ -26,9 +22,19 @@ animations = [ {
 "loop": true,
 "name": "middle_row",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "top_row",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "death",
+"speed": 30.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
 [node name="Invader" type="KinematicBody2D"]
@@ -43,12 +49,12 @@ scale = Vector2( 0.5, 0.5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 2 )
-animation = "bottom_row"
+frames = SubResource( 1 )
+animation = "death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="RightRayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -16, 0 )

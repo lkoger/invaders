@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://components/laser.png" type="Texture" id=1]
 [ext_resource path="res://components/Missle.gd" type="Script" id=2]
 [ext_resource path="res://components/AreaOfEffect.tscn" type="PackedScene" id=3]
 
@@ -13,7 +13,7 @@ modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.062, 0.25 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

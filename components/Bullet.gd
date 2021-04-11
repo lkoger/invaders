@@ -6,6 +6,8 @@ var player_owned := true
 var velocity := Vector2(0.0,0.0)
 var turrent = null
 var hit_something = false
+var animation_time := 10
+var animation_timer := animation_time
 onready var rng = RandomNumberGenerator.new()
 
 func _ready():
@@ -17,6 +19,10 @@ func _ready():
 
 func _physics_process(delta):
 	position += velocity * delta
+	animation_time -= 1
+	if animation_time == 0:
+		animation_time = animation_timer
+		$Sprite.flip_h = not $Sprite.flip_h
 
 func fire(direction: Vector2, speed: float):
 	velocity = direction * speed
