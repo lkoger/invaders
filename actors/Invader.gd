@@ -23,6 +23,7 @@ func _ready():
 	add_to_group("invader")
 	fire_delay = fire_delay + rng.randi_range(-15, 15)
 	fire_delay_counter = fire_delay
+	$BaracadeDestroyArea.connect("body_entered", self, "_destroy_baracade")
 	set_process(false)
 	set_physics_process(false)
 
@@ -99,7 +100,10 @@ func change_direction():
 
 func _move(delta):
 	velocity = Vector2(speed*direction, 0.0)
-	move_and_collide(velocity*delta)
+	var collision = move_and_collide(velocity*delta)
+	if collision:
+		if collision.collider is BaracadeBlock:
+			collision.collider.damage(1)
 	var frame = $AnimatedSprite.get_frame()
 	$AnimatedSprite.set_frame((frame + 1) % 2)
 
@@ -116,4 +120,9 @@ func die():
 	$DeathSound.play()
 	$AnimatedSprite.set_animation("death")
 	$AnimatedSprite.play()
-	
+
+func _destroy_baracade(body: Node):
+	body.damage(1)
+	if body is Player:
+		print("Called!!!!!!!!!!!!!")
+		get_tree().root.get_children()[0].end_game()

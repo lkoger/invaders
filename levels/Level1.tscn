@@ -75,3 +75,15 @@ position = Vector2( 128, 216 )
 
 [node name="pos4" type="Position2D" parent="Baracades"]
 position = Vector2( 384, 216 )
+
+[node name="MotherShipSpawns" type="Node2D" parent="."]
+
+[node name="left" type="Position2D" parent="MotherShipSpawns"]
+position = Vector2( -480, -280 )
+
+[node name="right" type="Position2D" parent="MotherShipSpawns"]
+position = Vector2( 480, -280 )
+
+[node name="MotherShipTimer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true

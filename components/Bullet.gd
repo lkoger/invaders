@@ -33,7 +33,7 @@ func fire(direction: Vector2, speed: float):
 
 func _on_body_entered(body: Node):
 	if hit_something == false:
-		if player_owned and body is Invader:
+		if player_owned and (body is Invader or body is MotherShip):
 			hit_something = true
 			body.damage(dmg)
 			destroy_self()

@@ -19,7 +19,6 @@ func new_round():
 
 func end_game():
 	high_score = max(level_instance.get_node('GameInfo').score, high_score)
-	#get_tree().reload_current_scene()
 	level_instance.get_node('GameInfo').set_high_score(high_score)
 	level_instance.get_node('GameInfo').set_score(0)
 	level_instance.new_round(true)

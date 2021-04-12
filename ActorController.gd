@@ -2,6 +2,7 @@ extends Node2D
 
 var invader = load("res://actors/Invader.tscn")
 onready var defender = load("res://actors/Player.tscn").instance()
+var defender_spawn_pos = Vector2(0, 272)
 var rows := 5
 var columns := 11
 var time_offset := 1
@@ -28,6 +29,10 @@ onready var invaders = $invaders
 
 func _ready():
 	add_to_group("invader_controller")
+	# Set position of the defender here and then hide.
+	# Otherwise there is time before the game starts where
+	# the invaders collide with the invader and cause issues.
+	defender.spawn(defender_spawn_pos)
 	defender.hide_and_disable()
 	add_child(defender)
 
@@ -91,7 +96,7 @@ func _activate(delta):
 		_change_state(ACTIVE)
 #		add_child(defender)
 #		defender.position = Vector2(0, 272)
-		defender.spawn(Vector2(0, 272))
+		defender.spawn(defender_spawn_pos)
 		print("ACTIVE")
 
 func _physics_process(delta):
@@ -113,7 +118,7 @@ func _physics_process(delta):
 		if defender.lives <= 0:
 			_change_state(END)
 		elif defender.can_respawn():
-			defender.spawn(Vector2(0, 272))
+			defender.spawn(defender_spawn_pos)
 			_change_state(ACTIVE)
 	elif state == END:
 		_game_over()

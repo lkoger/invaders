@@ -7,6 +7,7 @@ var respawn_time := 300
 var timer := 0
 
 func _ready():
+	$CollisionShape2D.disabled = true
 	speed = speed / 2
 	get_tree().call_group("level", "update_ui_lives", lives)
 	pass
@@ -18,7 +19,6 @@ func _physics_process(delta):
 		velocity.x = max(-speed, velocity.x - speed)
 		
 	if Input.is_action_just_pressed("fire"):
-		#$Turrent.can_fire = true
 		$Turrent.fire()
 	
 	move_and_collide(velocity*delta)

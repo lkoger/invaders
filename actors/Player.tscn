@@ -8,6 +8,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 26
 script = ExtResource( 2 )
 speed = 250
 
