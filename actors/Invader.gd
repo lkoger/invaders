@@ -10,7 +10,7 @@ onready var rng = RandomNumberGenerator.new()
 var fire_delay := 30
 var fire_delay_counter := fire_delay
 
-var death_time := 30
+var death_time := 15
 var death_timer := death_time
 
 var start_position := Vector2(0.0, 0.0)
@@ -41,6 +41,7 @@ func set_score(val):
 	score = val
 
 func hide_and_disable():
+	get_tree().call_group("invader_controller", "start_movement")
 	dead = true
 	visible = false
 	$CollisionShape2D.disabled = true
@@ -120,6 +121,7 @@ func die():
 	$DeathSound.play()
 	$AnimatedSprite.set_animation("death")
 	$AnimatedSprite.play()
+	get_tree().call_group("invader_controller", "stop_movement")
 
 func _destroy_baracade(body: Node):
 	body.damage(1)

@@ -30,3 +30,9 @@ func _despawn():
 	queue_free()
 	get_tree().call_group("level", "start_mothership_timer")
 	
+func stop_movement():
+	set_physics_process(false)
+	
+
+func start_movement():
+	set_physics_process(true)

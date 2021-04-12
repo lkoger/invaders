@@ -14,7 +14,7 @@ var invader_idx := 0
 var num_invaders := rows * columns
 #var lives := 3
 
-export var movement_delay := 1
+export var movement_delay := 0
 var speed := 1
 
 enum {INIT, ACTIVATE, ACTIVE, INACTIVE, END}
@@ -106,6 +106,7 @@ func _physics_process(delta):
 	if state == ACTIVE:
 		if defender.dead == true:
 			_change_state(INACTIVE)
+			get_tree().call_group("mothership", "stop_movement")
 		else:
 			if time_counter == 0:
 				var invader_dead = _move(delta)
@@ -120,6 +121,7 @@ func _physics_process(delta):
 		elif defender.can_respawn():
 			defender.spawn(defender_spawn_pos)
 			_change_state(ACTIVE)
+			get_tree().call_group("mothership", "start_movement")
 	elif state == END:
 		_game_over()
 	
@@ -186,4 +188,9 @@ func _game_over():
 		else:
 			print("End Game")
 			get_tree().root.get_children()[0].end_game()
-	
+
+func stop_movement():
+	set_physics_process(false)
+
+func start_movement():
+	set_physics_process(true)
