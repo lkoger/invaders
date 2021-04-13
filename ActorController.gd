@@ -17,6 +17,9 @@ var num_invaders := rows * columns
 export var movement_delay := 0
 var speed := 1
 
+var sounds_per_iteration := 1
+var sound_iterations := 0
+
 enum {INIT, ACTIVATE, ACTIVE, INACTIVE, END}
 var state = INIT
 
@@ -116,7 +119,7 @@ func _physics_process(delta):
 			else:
 				time_counter = max(0, time_counter-1)
 	elif state == INACTIVE:
-		if defender.lives <= 0:
+		if defender.lives <= 0 and defender.timer == defender.respawn_time:
 			_change_state(END)
 		elif defender.can_respawn():
 			defender.spawn(defender_spawn_pos)
@@ -132,7 +135,11 @@ func _move(delta):
 			start_drop = false
 	elif invader_idx == 0 and drop:
 		drop = false
-	#
+	
+	if invader_idx == 0:
+		if sound_iterations == 0 and not $MoveSounds.get_child(0).is_playing():
+			$MoveSounds.get_child(0).play()
+		sound_iterations = (sound_iterations + 1) % sounds_per_iteration
 	
 	var change_direction = drop
 	var dead = invaders.get_child(invader_idx).dead
@@ -147,9 +154,7 @@ func _move(delta):
 	
 	if invader_idx == (num_invaders - 1) and drop:
 		drop = false
-	
-#	if invader_idx == 0 and not $MoveSound.is_playing():
-#		$MoveSound.play()
+		
 	invader_idx = (invader_idx + 1) % num_invaders
 	return dead
 

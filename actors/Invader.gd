@@ -4,7 +4,7 @@ class_name Invader
 export var row := 1
 export var direction := 1
 export var drop_distance := 128 * 4
-export var fire_chance := 1.0 / 18.0
+export var fire_chance := 1.0 / 1.0
 onready var rng = RandomNumberGenerator.new()
 
 var fire_delay := 30
@@ -124,7 +124,8 @@ func die():
 	get_tree().call_group("invader_controller", "stop_movement")
 
 func _destroy_baracade(body: Node):
-	body.damage(1)
 	if body is Player:
 		print("Called!!!!!!!!!!!!!")
 		get_tree().root.get_children()[0].end_game()
+	else:
+		body.damage(1)

@@ -7,10 +7,10 @@ var respawn_time := 300
 var timer := 0
 
 func _ready():
+	$DeathSound.connect("finished", self, 'hide_and_disable')
 	$CollisionShape2D.disabled = true
 	speed = speed / 2
 	get_tree().call_group("level", "update_ui_lives", lives)
-	pass
 
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
@@ -40,7 +40,11 @@ func _die():
 	dead = true
 	lives -= 1
 	get_tree().call_group("level", "update_ui_lives", lives)
-	hide_and_disable()
+	$DeathSound.play()
+	$AnimatedSprite.play("death")
+	timer = 0
+	set_physics_process(false)
+	#hide_and_disable()
 	
 	# Need to call some end game logic at this point
 #	print(get_parent().name)
@@ -48,12 +52,11 @@ func _die():
 #	queue_free()
 
 func hide_and_disable():
-	timer = 0
-	dead = true
+	#dead = true
 	visible = false
 	$CollisionShape2D.disabled = true
 	#set_process(false)
-	set_physics_process(false)
+	#set_physics_process(false)
 
 func spawn(pos):
 	reset_health()
@@ -61,6 +64,7 @@ func spawn(pos):
 	timer = 0
 	dead = false
 	visible = true
+	$AnimatedSprite.play("default")
 	$CollisionShape2D.disabled = false
 	#set_process(true)
 	set_physics_process(true)
