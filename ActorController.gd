@@ -125,6 +125,8 @@ func _physics_process(delta):
 			defender.spawn(defender_spawn_pos)
 			_change_state(ACTIVE)
 			get_tree().call_group("mothership", "start_movement")
+		else:
+			get_tree().call_group("mothership", "stop_movement")
 	elif state == END:
 		_game_over()
 	
