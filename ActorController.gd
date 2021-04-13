@@ -2,9 +2,9 @@ extends Node2D
 
 var invader = load("res://actors/Invader.tscn")
 onready var defender = load("res://actors/Player.tscn").instance()
-var defender_spawn_pos = Vector2(0, 272)
-var rows := 5
-var columns := 11
+var defender_spawn_pos = Vector2(0, 190)
+var rows := 1
+var columns := 1
 var time_offset := 1
 var row_time_offset := 4
 var time_counter := time_offset
@@ -12,6 +12,8 @@ var row_idx := 0
 var col_idx := 0
 var invader_idx := 0
 var num_invaders := rows * columns
+var col_offset := 44
+var row_offset := 40
 #var lives := 3
 
 export var movement_delay := 0
@@ -67,7 +69,7 @@ func _init_invaders(delta):
 		var invader_instance = invader.instance()
 		invader_instance.row = row_idx
 		invaders.add_child(invader_instance)
-		invader_instance.position = Vector2((col_idx*64) - (64*columns*0.5), -row_idx*48)
+		invader_instance.position = Vector2((col_idx*col_offset) - (col_offset*columns*0.5), -row_idx*row_offset)
 		if row_idx < 2:
 			invader_instance.set_score(10)
 			invader_instance.set_sprite('bottom_row')

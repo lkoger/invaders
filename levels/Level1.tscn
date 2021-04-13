@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/GameInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Level1.gd" type="Script" id=2]
+[ext_resource path="res://line.png" type="Texture" id=3]
 [ext_resource path="res://actors/ActorController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://black_background.png" type="Texture" id=6]
@@ -31,6 +32,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color( 0.254902, 0.705882, 0, 1 )
+margin_left = -384.0
+margin_top = 248.0
+margin_right = 640.0
+margin_bottom = 288.0
+rect_scale = Vector2( 0.75, 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="InvaderController" parent="." instance=ExtResource( 4 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -39,9 +52,11 @@ current = true
 [node name="Boundries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundries"]
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/StaticBody2D"]
-position = Vector2( 0, 328 )
+position = Vector2( 0, 280 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundries/StaticBody2D"]
@@ -49,11 +64,11 @@ position = Vector2( 0, -328 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundries/StaticBody2D"]
-position = Vector2( -536, 0 )
+position = Vector2( -416, 0 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundries/StaticBody2D"]
-position = Vector2( 536, 0 )
+position = Vector2( 416, -8 )
 shape = SubResource( 4 )
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
@@ -65,24 +80,24 @@ margin_bottom = 304.0
 [node name="Baracades" type="Node2D" parent="."]
 
 [node name="pos1" type="Position2D" parent="Baracades"]
-position = Vector2( -384, 216 )
+position = Vector2( -224, 152 )
 
 [node name="pos2" type="Position2D" parent="Baracades"]
-position = Vector2( -128, 216 )
+position = Vector2( -80, 152 )
 
 [node name="pos3" type="Position2D" parent="Baracades"]
-position = Vector2( 128, 216 )
+position = Vector2( 80, 152 )
 
 [node name="pos4" type="Position2D" parent="Baracades"]
-position = Vector2( 384, 216 )
+position = Vector2( 224, 152 )
 
 [node name="MotherShipSpawns" type="Node2D" parent="."]
 
 [node name="left" type="Position2D" parent="MotherShipSpawns"]
-position = Vector2( -480, -280 )
+position = Vector2( -368, -248 )
 
 [node name="right" type="Position2D" parent="MotherShipSpawns"]
-position = Vector2( 480, -280 )
+position = Vector2( 368, -248 )
 
 [node name="MotherShipTimer" type="Timer" parent="."]
 wait_time = 25.0

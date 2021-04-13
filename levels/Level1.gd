@@ -14,7 +14,7 @@ func _ready():
 		var clone = baracade.instance()
 		pos.add_child(clone)
 	$MotherShipTimer.connect("timeout", self, "_spawn_mothership")
-	$MotherShipTimer.start(25.0)
+	$MotherShipTimer.start(5.0)
 	pause()
 
 func _process(delta):

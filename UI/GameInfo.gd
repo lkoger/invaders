@@ -12,6 +12,15 @@ func increment_score(inc):
 
 func set_lives(lives):
 	$Lives.text = str(lives)
+	if lives == 3:
+		$life_icons/life1.visible = true
+		$life_icons/life2.visible = true
+	elif lives == 2:
+		$life_icons/life1.visible = true
+		$life_icons/life2.visible = false
+	elif lives < 2:
+		$life_icons/life1.visible = false
+		$life_icons/life2.visible = false
 
 func set_high_score(val):
 	high_score = val

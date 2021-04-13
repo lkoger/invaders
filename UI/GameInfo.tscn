@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/GameInfo.gd" type="Script" id=1]
+[ext_resource path="res://actors/defender.png" type="Texture" id=2]
 
 [node name="GameInfo" type="Control"]
 margin_left = -512.0
@@ -13,12 +14,13 @@ __meta__ = {
 }
 
 [node name="Lives" type="RichTextLabel" parent="."]
-margin_left = 64.0
+margin_left = 192.0
 margin_top = 556.0
-margin_right = 104.0
+margin_right = 232.0
 margin_bottom = 596.0
 text = "3"
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -61,3 +63,17 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="life_icons" type="Node2D" parent="."]
+
+[node name="life1" type="Sprite" parent="life_icons"]
+modulate = Color( 0.254902, 0.705882, 0, 1 )
+position = Vector2( 232, 556 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="life2" type="Sprite" parent="life_icons"]
+modulate = Color( 0.254902, 0.705882, 0, 1 )
+position = Vector2( 272, 556 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
