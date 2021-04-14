@@ -101,7 +101,7 @@ position = Vector2( -368, -248 )
 position = Vector2( 368, -248 )
 
 [node name="MotherShipTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 25.0
 one_shot = true
 
 [node name="GreenZone" parent="." instance=ExtResource( 7 )]

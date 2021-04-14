@@ -14,7 +14,7 @@ func _ready():
 		var clone = baracade.instance()
 		pos.add_child(clone)
 	$MotherShipTimer.connect("timeout", self, "_spawn_mothership")
-	$MotherShipTimer.start(5.0)
+	$MotherShipTimer.start(25.0)
 	pause()
 
 func _process(delta):
@@ -35,10 +35,10 @@ func increment_score(inc):
 	$GameInfo.increment_score(inc)
 
 func new_round(new_game):
-	#get_tree().call_group("mothership", "_despawn")
+	get_tree().call_group("mothership", "_despawn")
 	get_tree().call_group("projectile", "destroy_self")
-	if is_instance_valid(mother_ship_instance):
-		mother_ship_instance._despawn()
+#	if is_instance_valid(mother_ship_instance):
+#		mother_ship_instance._despawn()
 	$InvaderController.new_round(new_game)
 	var baracade_positions = $Baracades.get_children()
 	for pos in baracade_positions:
@@ -47,7 +47,7 @@ func new_round(new_game):
 			
 		var clone = baracade.instance()
 		pos.call_deferred('add_child', clone)
-	pause()
+	#pause()
 
 # Mothership should just switch between spawning left and right. No random numbers and no dependency on number of shots by player.
 func _spawn_mothership():

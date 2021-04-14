@@ -109,6 +109,8 @@ func _drop(delta):
 			num_drops = 0
 			drop_timer = 0
 			_change_state(ACTIVE)
+			#defender.spawn(defender_spawn_pos)
+			defender.enable_movement()
 		else:
 			$MoveSound.play()
 			for invader in invaders.get_children():
@@ -128,6 +130,7 @@ func _activate(delta):
 #		add_child(defender)
 #		defender.position = Vector2(0, 272)
 		defender.spawn(defender_spawn_pos)
+		defender.disable_movement()
 		_change_state(DROP)
 		print("DROP")
 

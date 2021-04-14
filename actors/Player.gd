@@ -24,6 +24,14 @@ func _physics_process(delta):
 	move_and_collide(velocity*delta)
 	velocity.x = lerp(velocity.x, 0.0, 0.2)
 
+func disable_movement():
+	set_physics_process(false)
+	set_process(false)
+
+func enable_movement():
+	set_physics_process(true)
+	set_process(true)
+
 func _process(delta):
 	if not dead and health <= 0:
 		print(health)
