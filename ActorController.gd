@@ -3,8 +3,8 @@ extends Node2D
 var invader = load("res://actors/Invader.tscn")
 onready var defender = load("res://actors/Player.tscn").instance()
 var defender_spawn_pos = Vector2(0, 190)
-var rows := 1
-var columns := 1
+var rows := 5
+var columns := 11
 var time_offset := 1
 var row_time_offset := 4
 var time_counter := time_offset

@@ -1,10 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/MotherShip.gd" type="Script" id=1]
 [ext_resource path="res://actors/mothership.png" type="Texture" id=2]
+[ext_resource path="res://audio/MotherShipDeath.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio/MotherShipMovement.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 7 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/mother_ship_explosion_1.png-37810801b7818ebe7eb105a278a5f454.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/mother_ship_explosion_2.png-b24347ed6d7b4635f3ae168fa4be8acb.stex"
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "death",
+"speed": 1.0
+} ]
 
 [node name="MotherShip" type="KinematicBody2D"]
 collision_layer = 2
@@ -16,9 +39,9 @@ speed = 75
 position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+frames = SubResource( 4 )
 
 [node name="RightRayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 16, 4 )
@@ -31,3 +54,11 @@ position = Vector2( -16, 4 )
 enabled = true
 cast_to = Vector2( -16, 0 )
 collision_mask = 16
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="MovementSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
+pitch_scale = 0.8
