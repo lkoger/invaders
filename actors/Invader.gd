@@ -3,7 +3,7 @@ class_name Invader
 
 export var row := 1
 export var direction := 1
-export var drop_distance := 128 * 8
+export var drop_distance := 128 * 7
 export var fire_chance := 1.0 / 18.0
 onready var rng = RandomNumberGenerator.new()
 
@@ -63,13 +63,17 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 
-func move(delta, drop, change_direction, can_fire):
+func initial_drop(distance):
+	position = Vector2(position.x, position.y + distance)
+
+func move(delta, drop, change_direction, can_fire, just_drop):
 	if dead:
 		return
 	
 	if change_direction:
 		change_direction()
-	_move(delta)
+	if not just_drop:
+		_move(delta)
 	if drop:
 		drop(delta)
 	

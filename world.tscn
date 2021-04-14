@@ -3,4 +3,5 @@
 [ext_resource path="res://World.gd" type="Script" id=2]
 
 [node name="World" type="Node2D"]
+position = Vector2( 0, -1.67017 )
 script = ExtResource( 2 )
