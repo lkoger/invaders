@@ -3,8 +3,8 @@ extends Node2D
 var invader = load("res://actors/Invader.tscn")
 onready var defender = load("res://actors/Player.tscn").instance()
 var defender_spawn_pos = Vector2(0, 190)
-var rows := 5
-var columns := 11
+var rows := 1
+var columns := 1
 var time_offset := 1
 var row_time_offset := 4
 var time_counter := time_offset
@@ -79,6 +79,7 @@ func _init_invaders(delta):
 		else:
 			invader_instance.set_score(30)
 			invader_instance.set_sprite('top_row')
+		#invader_instance.set_sprite('godot')
 
 		col_idx += 1
 		if col_idx == columns:

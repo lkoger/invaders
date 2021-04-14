@@ -1,33 +1,47 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://black_background.png" type="Texture" id=2]
+[ext_resource path="res://pixel_font.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 3 )
 
 [node name="PauseMenu" type="PopupMenu"]
 pause_mode = 2
 margin_left = -512.0
 margin_top = -300.0
 margin_right = 512.0
+margin_bottom = 300.0
+theme = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+
 [node name="Start" type="Button" parent="."]
-margin_left = 384.0
-margin_top = 44.0
-margin_right = 640.0
-margin_bottom = 108.0
-text = "Start"
+margin_left = 440.0
+margin_top = 204.0
+margin_right = 587.0
+margin_bottom = 271.0
+text = "START"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restart" type="Button" parent="."]
-margin_left = 384.0
-margin_top = 172.0
-margin_right = 640.0
-margin_bottom = 236.0
+margin_left = 416.0
+margin_top = 276.0
+margin_right = 609.0
+margin_bottom = 343.0
 text = "Restart"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

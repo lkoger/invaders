@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/invader_1_1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Invader.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://actors/invader_2_1.png" type="Texture" id=8]
 [ext_resource path="res://actors/invader_2_2.png" type="Texture" id=9]
 [ext_resource path="res://actors/invader_explosion.png" type="Texture" id=10]
+[ext_resource path="res://actors/godot_icon.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,6 +33,11 @@ animations = [ {
 "loop": false,
 "name": "death",
 "speed": 30.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "godot",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -56,7 +62,7 @@ collision_mask = 2
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "bottom_row"
+animation = "godot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

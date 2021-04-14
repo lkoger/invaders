@@ -124,8 +124,7 @@ func die():
 	get_tree().call_group("invader_controller", "stop_movement")
 
 func _destroy_baracade(body: Node):
-	if body is Player:
-		print("Called!!!!!!!!!!!!!")
-		get_tree().root.get_children()[0].end_game()
-	else:
-		body.damage(1)
+	body.damage(1)
+
+func shoot_blanks():
+	$Turrent.set_shoot_blanks(true)

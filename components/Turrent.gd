@@ -6,10 +6,14 @@ var bullet = load("res://components/Bullet.tscn")
 var missle = load("res://components/Missle.tscn")
 onready var root = get_tree().root.get_children()[0]
 var can_fire := true
+var shoot_blanks := false
 onready var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	
+func set_shoot_blanks(val):
+	shoot_blanks = val
 
 func fire():
 	if can_fire:
@@ -20,6 +24,12 @@ func fire():
 		# Subtract position from cast_to to get vector
 		var direction = (to_global(cast_to) - global_position).normalized()
 		var projectile = _get_projectile()
+		
+		# Shoot blanks is only true when a turrent is owned by an invader
+		# that is very near the player. In which case, projectiles do not
+		# harm them. It's similar to the way the original was made.
+		if shoot_blanks:
+			projectile.dmg = 0
 		
 		# Make child of root node so that projectile does not follow the actor
 		# that fires it.

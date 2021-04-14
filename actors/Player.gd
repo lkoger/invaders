@@ -72,3 +72,4 @@ func spawn(pos):
 func can_respawn():
 	if timer == respawn_time and lives > 0:
 		return true
+
