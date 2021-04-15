@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MotherShipDeath.ogg-8adde37c408643667847151b13acdc6f.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/MotherShipDeath.ogg"
+dest_files=[ "res://.import/MotherShipDeath.ogg-8adde37c408643667847151b13acdc6f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

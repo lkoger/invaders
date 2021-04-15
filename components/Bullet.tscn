@@ -1,9 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://components/laser.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/components/laser.png" type="Texture" id=1]
 [ext_resource path="res://components/Bullet.gd" type="Script" id=2]
 [ext_resource path="res://components/AreaOfEffect.tscn" type="PackedScene" id=3]
-[ext_resource path="res://audio/laserRetro_003.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/laserRetro_003.ogg" type="AudioStream" id=4]
+
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0

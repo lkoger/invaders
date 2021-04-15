@@ -1,16 +1,19 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://actors/invader_1_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/actors/invader_1_1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Invader.gd" type="Script" id=2]
 [ext_resource path="res://components/Turrent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://audio/laserRetro_002.ogg" type="AudioStream" id=4]
-[ext_resource path="res://actors/invader_1_2.png" type="Texture" id=5]
-[ext_resource path="res://actors/invader_3_1.png" type="Texture" id=6]
-[ext_resource path="res://actors/invader_3_2.png" type="Texture" id=7]
-[ext_resource path="res://actors/invader_2_1.png" type="Texture" id=8]
-[ext_resource path="res://actors/invader_2_2.png" type="Texture" id=9]
-[ext_resource path="res://actors/invader_explosion.png" type="Texture" id=10]
-[ext_resource path="res://actors/godot_icon.png" type="Texture" id=11]
+[ext_resource path="res://assets/audio/laserRetro_002.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/images/actors/invader_1_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/actors/invader_3_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/actors/invader_3_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/actors/invader_2_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/actors/invader_2_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/actors/invader_explosion.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/actors/godot_icon.png" type="Texture" id=11]
+
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

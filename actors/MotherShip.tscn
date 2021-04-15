@@ -1,9 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/MotherShip.gd" type="Script" id=1]
-[ext_resource path="res://actors/mothership.png" type="Texture" id=2]
-[ext_resource path="res://audio/MotherShipDeath.ogg" type="AudioStream" id=3]
-[ext_resource path="res://audio/MotherShipMovement.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/images/actors/mothership.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/MotherShipDeath.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/MotherShipMovement.ogg" type="AudioStream" id=4]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 7 )

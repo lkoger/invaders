@@ -57,8 +57,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Invaders"
-run/main_scene="res://World.tscn"
-config/icon="res://actors/godot_icon.png"
+run/main_scene="res://levels/GodotInvaders.tscn"
+config/icon="res://assets/images/actors/godot_icon.png"
 
 [display]
 
@@ -97,4 +97,5 @@ pause={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+quality/driver/driver_name="GLES2"
+environment/default_environment="res://UI/default_env.tres"
