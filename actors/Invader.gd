@@ -86,10 +86,8 @@ func move(delta, drop, change_direction, can_fire, just_drop):
 				$Turrent.fire()
 	
 	if direction > 0 and $RightRayCast2D.is_colliding() and $RightRayCast2D.get_collider() is StaticBody2D:
-		print($RightRayCast2D.get_collider().get_class())
 		announce_drop()
 	elif direction < 0 and $LeftRayCast2D.is_colliding() and $LeftRayCast2D.get_collider() is StaticBody2D:
-		print($LeftRayCast2D.get_collider().get_class())
 		announce_drop()
 	
 

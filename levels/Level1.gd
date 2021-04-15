@@ -7,7 +7,6 @@ var mother_ship_spawn_left = true
 var mother_ship_instance = null
 
 func _ready():
-	print("Level Ready")
 	add_to_group("level")
 	var baracade_positions = $Baracades.get_children()
 	for pos in baracade_positions:
@@ -47,6 +46,9 @@ func new_round(new_game):
 			
 		var clone = baracade.instance()
 		pos.call_deferred('add_child', clone)
+	if new_game:
+		$PauseMenu.end_game()
+		pause()
 	#pause()
 
 # Mothership should just switch between spawning left and right. No random numbers and no dependency on number of shots by player.

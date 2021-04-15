@@ -26,10 +26,22 @@ texture = ExtResource( 2 )
 
 [node name="Start" type="Button" parent="."]
 margin_left = 440.0
-margin_top = 204.0
+margin_top = 220.0
 margin_right = 587.0
-margin_bottom = 271.0
+margin_bottom = 287.0
 text = "START"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="."]
+visible = false
+margin_left = 424.0
+margin_top = 220.0
+margin_right = 605.0
+margin_bottom = 287.0
+text = "RESUME"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,9 +49,10 @@ __meta__ = {
 
 [node name="Restart" type="Button" parent="."]
 margin_left = 416.0
-margin_top = 276.0
+margin_top = 292.0
 margin_right = 609.0
-margin_bottom = 343.0
+margin_bottom = 359.0
+disabled = true
 text = "Restart"
 flat = true
 __meta__ = {
@@ -47,5 +60,6 @@ __meta__ = {
 }
 [connection signal="about_to_show" from="." to="." method="_on_PauseMenu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_PauseMenu_popup_hide"]
-[connection signal="pressed" from="Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

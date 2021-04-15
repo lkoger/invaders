@@ -97,7 +97,6 @@ func _init_invaders(delta):
 			row_idx += 1
 		time_counter = time_offset
 	elif row_idx == rows:
-		print("ACTIVATE")
 		_change_state(ACTIVATE)
 		row_idx = 0
 		col_idx = 0
@@ -132,7 +131,6 @@ func _activate(delta):
 		defender.spawn(defender_spawn_pos)
 		defender.disable_movement()
 		_change_state(DROP)
-		print("DROP")
 
 func _physics_process(delta):
 	if is_game_over():
@@ -219,17 +217,14 @@ func reset_invader_positions():
 
 func _change_state(x):
 	state = x
-	print("state: " + str(state))
 
 func _game_over():
 	if game_over == false:
 		game_over = true
 		#set_physics_process(false)
 		if defender.lives > 0:
-			print("New Round")
 			get_tree().root.get_children()[0].new_round()
 		else:
-			print("End Game")
 			get_tree().root.get_children()[0].end_game()
 
 func stop_movement():

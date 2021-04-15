@@ -34,7 +34,6 @@ func enable_movement():
 
 func _process(delta):
 	if not dead and health <= 0:
-		print(health)
 		_die()
 	if dead:
 		if timer < respawn_time:
@@ -52,19 +51,11 @@ func _die():
 	$AnimatedSprite.play("death")
 	timer = 0
 	set_physics_process(false)
-	#hide_and_disable()
-	
-	# Need to call some end game logic at this point
-#	print(get_parent().name)
-#	get_tree().call_group("world", "end_game")
-#	queue_free()
 
 func hide_and_disable():
 	#dead = true
 	visible = false
 	$CollisionShape2D.disabled = true
-	#set_process(false)
-	#set_physics_process(false)
 
 func spawn(pos):
 	reset_health()
@@ -74,7 +65,6 @@ func spawn(pos):
 	visible = true
 	$AnimatedSprite.play("default")
 	$CollisionShape2D.disabled = false
-	#set_process(true)
 	set_physics_process(true)
 
 func can_respawn():

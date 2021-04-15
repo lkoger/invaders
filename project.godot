@@ -57,7 +57,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Invaders"
-config/icon="res://icon.png"
+run/main_scene="res://World.tscn"
+config/icon="res://actors/godot_icon.png"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 

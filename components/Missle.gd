@@ -25,7 +25,6 @@ func fire(direction: Vector2, speed: float):
 
 func _on_area_entered(area: Node):
 	if area is Bullet:
-		print("COLLISION")
 		area.destroy_self()
 		destroy_self()
 
