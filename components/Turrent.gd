@@ -1,7 +1,7 @@
 extends RayCast2D
 
 export var bullet_speed := 400.0
-export var missle_speed := 300.0
+export var missle_speed := 400.0
 var bullet = load("res://components/Bullet.tscn")
 var missle = load("res://components/Missle.tscn")
 onready var root = get_tree().root.get_children()[0]

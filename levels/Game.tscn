@@ -5,7 +5,7 @@
 [ext_resource path="res://actors/ActorController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/GreenZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/Game.gd" type="Script" id=5]
-[ext_resource path="res://assets/images/black_background.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/4k_black_background.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/line.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,10 +24,11 @@ extents = Vector2( 32, 304 )
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -512.0
-margin_top = -296.0
-margin_right = 512.0
-margin_bottom = 304.0
+show_behind_parent = true
+margin_left = -2048.0
+margin_top = -1080.0
+margin_right = 2048.0
+margin_bottom = 1080.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -109,3 +110,5 @@ margin_top = -296.0
 margin_bottom = 304.0
 
 [node name="PauseMenu" parent="UI" instance=ExtResource( 2 )]
+margin_top = -296.0
+margin_bottom = 304.0
