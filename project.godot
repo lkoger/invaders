@@ -56,9 +56,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Invaders"
+config/name="Godot Invaders"
 run/main_scene="res://levels/GodotInvaders.tscn"
-config/icon="res://assets/images/actors/godot_icon.png"
+config/icon="res://assets/images/actors/invader_3_2.png"
 
 [display]
 

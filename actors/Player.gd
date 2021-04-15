@@ -10,7 +10,7 @@ func _ready():
 	$DeathSound.connect("finished", self, 'hide_and_disable')
 	$CollisionShape2D.disabled = true
 	speed = speed / 2
-	get_tree().call_group("level", "update_ui_lives", lives)
+	get_tree().call_group("game", "update_ui_lives", lives)
 
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
@@ -46,7 +46,7 @@ func _die():
 	
 	dead = true
 	lives -= 1
-	get_tree().call_group("level", "update_ui_lives", lives)
+	get_tree().call_group("game", "update_ui_lives", lives)
 	$DeathSound.play()
 	$AnimatedSprite.play("death")
 	timer = 0

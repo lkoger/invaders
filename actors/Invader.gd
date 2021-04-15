@@ -47,7 +47,7 @@ func hide_and_disable():
 	$CollisionShape2D.disabled = true
 	set_process(false)
 	set_physics_process(false)
-	get_tree().call_group("level", "increment_score", score)
+	get_tree().call_group("game", "increment_score", score)
 
 func _process(delta):
 	fire_delay_counter = max(0, fire_delay_counter-1)

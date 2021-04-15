@@ -18,7 +18,7 @@ func new_round():
 	level_instance.new_round(false)
 
 func end_game():
-	high_score = max(level_instance.get_node('GameInfo').score, high_score)
-	level_instance.get_node('GameInfo').set_high_score(high_score)
-	level_instance.get_node('GameInfo').set_score(0)
+	high_score = max(level_instance.get_node('UI/GameInfo').score, high_score)
+	level_instance.get_node('UI/GameInfo').set_high_score(high_score)
+	level_instance.get_node('UI/GameInfo').set_score(0)
 	level_instance.new_round(true)
