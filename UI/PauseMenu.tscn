@@ -7,7 +7,7 @@
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 3 )
 
-[node name="PauseMenu" type="PopupMenu"]
+[node name="PauseMenu" type="Control"]
 pause_mode = 2
 margin_left = -512.0
 margin_top = -300.0
@@ -58,8 +58,6 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="about_to_show" from="." to="." method="_on_PauseMenu_about_to_show"]
-[connection signal="popup_hide" from="." to="." method="_on_PauseMenu_popup_hide"]
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

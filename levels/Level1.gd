@@ -2,6 +2,8 @@ extends Node2D
 
 var baracade = load("res://components/Baracade.tscn")
 var mother_ship = load("res://actors/MotherShip.tscn")
+onready var pause_menu = $UI/PauseMenu
+onready var game_info = $UI/GameInfo
 var zoomed = false
 var mother_ship_spawn_left = true
 var mother_ship_instance = null
@@ -20,18 +22,18 @@ func _process(delta):
 	pass
 
 func pause():
-	$PauseMenu.show()
+	pause_menu.show()
 	get_tree().paused = true
 
 func unpause():
-	$PauseMenu.hide()
+	pause_menu.hide()
 	get_tree().paused = false
 
 func update_ui_lives(lives):
-	$GameInfo.set_lives(lives)
+	game_info.set_lives(lives)
 
 func increment_score(inc):
-	$GameInfo.increment_score(inc)
+	game_info.increment_score(inc)
 
 func new_round(new_game):
 	get_tree().call_group("mothership", "_despawn")
@@ -47,7 +49,7 @@ func new_round(new_game):
 		var clone = baracade.instance()
 		pos.call_deferred('add_child', clone)
 	if new_game:
-		$PauseMenu.end_game()
+		pause_menu.end_game()
 		pause()
 	#pause()
 

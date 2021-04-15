@@ -72,12 +72,6 @@ shape = SubResource( 3 )
 position = Vector2( 416, -8 )
 shape = SubResource( 4 )
 
-[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
-
-[node name="GameInfo" parent="." instance=ExtResource( 1 )]
-margin_top = -296.0
-margin_bottom = 304.0
-
 [node name="Baracades" type="Node2D" parent="."]
 
 [node name="pos1" type="Position2D" parent="Baracades"]
@@ -106,3 +100,12 @@ one_shot = true
 
 [node name="GreenZone" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 192 )
+
+[node name="UI" type="Node2D" parent="."]
+z_index = 1
+
+[node name="GameInfo" parent="UI" instance=ExtResource( 1 )]
+margin_top = -296.0
+margin_bottom = 304.0
+
+[node name="PauseMenu" parent="UI" instance=ExtResource( 5 )]
